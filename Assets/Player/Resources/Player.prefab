@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -8273749146565974851}
   - component: {fileID: 6453045812867931364}
   - component: {fileID: 2903253905837016911}
+  - component: {fileID: 8570231084078765691}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -32,6 +33,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5758926878152310363}
+  - {fileID: 2031047668283729491}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -84,6 +86,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4246a2975f25d4a67a73009c10b7b9a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunEnd: {fileID: 2031047668283729491}
+  projectilePool: {fileID: 8570231084078765691}
+  projectileSpeed: 50
 --- !u!114 &2903253905837016911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,13 +101,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7377e2c2e3c7b4662bd0a7ae3573fcc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  graphic: {fileID: 1429848176912634787}
   targetHorizontalPosition: 0
   targetVerticalPosition: 2
-  verticalForce: 50
-  horizontalForce: 100
-  slowdownForce: 5
-  maxSpeed: 1
-  cushion: 0.01
+  maxSpeed: 20
+--- !u!114 &8570231084078765691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2899826389084373243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 258d80eefe0a346a986c30145f368273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instanceObj: {fileID: 6559761733954057945, guid: 1cf277e60a70241e89e7511bf4c19eab, type: 3}
+  instanceCollection: []
 --- !u!1 &3638161598003777353
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,3 +201,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &8882190621662880895
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2031047668283729491}
+  m_Layer: 0
+  m_Name: BlasterEnd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2031047668283729491
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8882190621662880895}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 3.288, y: 0.34, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7175396158020527415}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}

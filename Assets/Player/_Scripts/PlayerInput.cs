@@ -5,12 +5,15 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     public PlayerControls inputManager;
-
     private ShipController sc;
     public ShipController ship {
         get { return sc == null ? sc = GetComponent<ShipController>() : sc; }
         set { sc = value; }
     }
+
+    public Transform gunEnd;
+    public GenericGameObjectPool projectilePool;
+    public float projectileSpeed;
 
     private void Awake()
     {
@@ -19,6 +22,7 @@ public class PlayerInput : MonoBehaviour
             (val) => { UpdateControls(val.ReadValue<Vector2>()); };
         inputManager.Controls.MovementControl.canceled +=
             (val) => { UpdateControls(val.ReadValue<Vector2>()); };
+        inputManager.Controls.Fire.performed += (val) => { Fire(); };
     }
 
     private void OnEnable()
@@ -47,5 +51,13 @@ public class PlayerInput : MonoBehaviour
             left && !right ? -1000 : ship.transform.position.x;
 
         Debug.Log(string.Format("Control({0}, {1})", ship.targetHorizontalPosition, ship.targetVerticalPosition));
+    }
+
+    void Fire()
+    {
+        var projectile = projectilePool.UnpoolItem<ProjectileScript>();
+        projectile.transform.position = gunEnd.position;
+        projectile.transform.rotation = gunEnd.rotation;
+        projectile.velocity = new Vector3((gunEnd.position.x > transform.position.x ? 1 : -1) * projectileSpeed, 0);
     }
 }

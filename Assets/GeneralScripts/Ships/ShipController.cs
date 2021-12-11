@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ShipController : MonoBehaviour
 {
+    public SpriteRenderer graphic;
+
     private Rigidbody2D rb;
     new public Rigidbody2D rigidbody {
         get { return rb == null ? rb = GetComponent<Rigidbody2D>() : rb; }
@@ -20,9 +22,16 @@ public class ShipController : MonoBehaviour
 
     //public float cushion = 0;
 
-    private void FixedUpdate() {
+    private float lastPos = -1000;
+
+    private void FixedUpdate()
+    {
         rigidbody.MovePosition(Vector2.MoveTowards(rigidbody.position,
             new Vector2(targetHorizontalPosition, targetVerticalPosition), maxSpeed * Time.fixedDeltaTime));
+
+        if (transform.position.x > lastPos) graphic.flipX = false;
+        else if (transform.position.x < lastPos) graphic.flipX = true;
+        lastPos = transform.position.x;
     }
 
     //private void FixedUpdate() {
