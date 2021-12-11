@@ -11,11 +11,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Civilian
+  - Environment
+  - BoundsAffectors
   - 
   - 
   - 
@@ -40,4 +40,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 744304129
+    locked: 0
+  - name: Ships
+    uniqueID: 1626857019
+    locked: 0
+  - name: Foreground
+    uniqueID: 1506464333
     locked: 0
